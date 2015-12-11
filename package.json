@@ -2,7 +2,7 @@
   "name": "hieroglyph",
   "title": "hieroglyph",
   "description": "hieroglyph",
-  "version": "0.0.2",
+  "version": "0.0.12",
   "homepage": "http://github.com/zswang/hieroglyph",
   "main": "hieroglyph.js",
   "author": {

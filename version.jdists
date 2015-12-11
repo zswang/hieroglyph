@@ -9,6 +9,17 @@ version = version.replace(/\d+$/, function (value) {
 /*<jdists encoding='jhtmls' data='package.json' export='#version'>#{version}</jdists>*/
 
 /*<jdists encoding='jhtmls' data='bower.json' export='bower.json'>*/
-version = '<!--jdists import="#version" /-->';
+var $package = /*<jdists import="./package.json" />*/;
+this.name = $package.name;
+this.version = $package.version;
+this.title = $package.title;
+this.description = $package.description;
+this.homepage = $package.homepage;
+this.main = $package.main;
+this.author = $package.author;
+this.repository = $package.repository;
+this.keywords = $package.keywords;
+this.bugs = $package.bugs;
+this.license = $package.license;
 !#{JSON.stringify(this, null, '  ')}
 /*</jdists>*/

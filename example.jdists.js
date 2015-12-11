@@ -1,3 +1,10 @@
+global.btoa = function (str) {
+  return new Buffer(String(str)).toString('base64');
+};
+global.atob = function (base64) {
+  return new Buffer(String(base64), 'base64').toString();
+};
+
 var assert = require('should');
 /*<jdists encoding="ejs" data="package.json">
 var <%- name %> = require('../.');

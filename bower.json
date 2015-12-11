@@ -1,11 +1,7 @@
 {
   "name": "hieroglyph",
-  "version": "0.0.2",
-  "homepage": "https://github.com/zswang/hieroglyph",
-  "authors": {
-    "name": "zswang",
-    "url": "http://weibo.com/zswang"
-  },
+  "version": "0.0.12",
+  "homepage": "http://github.com/zswang/hieroglyph",
   "description": "hieroglyph",
   "main": "hieroglyph.js",
   "moduleType": [
@@ -29,5 +25,17 @@
     "app/components",
     "test",
     "tests"
-  ]
+  ],
+  "title": "hieroglyph",
+  "author": {
+    "name": "zswang",
+    "url": "http://weibo.com/zswang"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zswang/hieroglyph.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zswang/hieroglyph/issues"
+  }
 }
