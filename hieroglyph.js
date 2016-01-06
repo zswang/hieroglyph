@@ -7,7 +7,7 @@
    * hieroglyph
    * @author
    *   zswang (http://weibo.com/zswang)
-   * @version 0.0.14
+   * @version 0.0.15
    * @see https://github.com/zswang/jmd5s
    * @see https://github.com/wbond/md5-js
    * @date 2016-01-06
@@ -21,10 +21,10 @@
     '!![]+!![]+!![]+!![]+!![]', // 5
     '!![]+!![]+!![]+!![]+!![]+!![]', // 6
     '!![]+!![]+!![]+!![]+!![]+!![]+!![]', // 7
-    // '!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]', // 8
-    '+(+[]+([]+{})[+!![]]+(+!![])+(+[]))', // 8 "+(0o10)"
-    // '!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]', // 9
-    '+(+[]+([]+{})[+!![]]+(+!![])+(+!![]))', // 9 "+(0o11)"
+    '!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]', // 8
+    // '+(+[]+([]+{})[+!![]]+(+!![])+(+[]))', // 8 "+(0o10)"
+    '!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]+!![]', // 9
+    // '+(+[]+([]+{})[+!![]]+(+!![])+(+!![]))', // 9 "+(0o11)"
   ];
   var characters = {
     '0': numbers[0] + '+[]',
@@ -243,6 +243,14 @@
    *
    * @param {string} expr 表达式
    * @return {string} 返回混淆后的内容
+   '''<example>'''
+   * @example encodeScript():base
+   ```js
+    var script = hieroglyph.encodeScript('console.log("hello world!你好")');
+    eval(script);
+    // > hello world!你好
+    ```
+   '''</example>'''
    */
   function encodeScript(expr) {
     return $functionConstructor + '(' + encodeString(expr) + ')()';
