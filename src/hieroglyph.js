@@ -247,7 +247,7 @@
       var char = String.fromCharCode(i);
       var result = eval(hieroglyph.encodeCharacter(char));
       if (result.length > 1) {
-        result = eval(result);
+        result = eval('"' + result + '"');
       }
       if (result === char) {
         success++;
@@ -260,7 +260,7 @@
     ```js
     var result = eval(hieroglyph.encodeCharacter('汉'));
     if (result.length > 1) {
-      result = eval(result);
+      result = eval('"' + result + '"');
     }
     console.log(JSON.stringify(result));
     // > "汉"
@@ -273,7 +273,7 @@
     }
     var charCode = char.charCodeAt();
     characters[char] =
-      encodeString('"\\u' + (charCode + 0x10000).toString(16).slice(1) + '"');
+      encodeString('\\u' + (charCode + 0x10000).toString(16).slice(1));
     return characters[char];
   }
   exports.encodeCharacter = encodeCharacter;
@@ -305,6 +305,14 @@
    *
    * @param {string} expr 表达式
    * @return {string} 返回混淆后的内容
+   '''<example>'''
+   * @example encodeScript():base
+   ```js
+    var script = hieroglyph.encodeScript('console.log("hello world!你好")');
+    eval(script);
+    // > hello world!你好
+    ```
+   '''</example>'''
    */
   function encodeScript(expr) {
     return $functionConstructor + '(' + encodeString(expr) + ')()';
@@ -332,10 +340,10 @@
   // console.log("%j", eval(encodeString('ab')));
   // console.log(encodeString('ab').length);
 
-  // console.log("%j", eval(encodeString('汉')));
+  console.log("%j", eval(encodeString('汉')));
   // console.log(encodeString('汉').length);
 
-  // console.log("%j", eval(encodeString('\u6c49')));
+  console.log("%j", eval(encodeString('\u6c49')));
   // console.log("%j", encodeScript("console.log('hello world!')").length);
   // eval(encodeScript("console.log('hello world!')"));
   /*</debug>*/

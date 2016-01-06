@@ -18,6 +18,7 @@ function print(value) {
   }
   printValue = value;
 }
+global.print = print;
 
 /*<remove>*/
   // <!--jdists encoding="glob" pattern="./src/*.js" export="#files" /-->

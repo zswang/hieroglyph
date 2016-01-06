@@ -7,10 +7,10 @@
    * hieroglyph
    * @author
    *   zswang (http://weibo.com/zswang)
-   * @version 0.0.12
+   * @version 0.0.14
    * @see https://github.com/zswang/jmd5s
    * @see https://github.com/wbond/md5-js
-   * @date 2015-12-12
+   * @date 2016-01-06
    */
   var numbers = [
     '+[]', // 0
@@ -187,7 +187,7 @@
       var char = String.fromCharCode(i);
       var result = eval(hieroglyph.encodeCharacter(char));
       if (result.length > 1) {
-        result = eval(result);
+        result = eval('"' + result + '"');
       }
       if (result === char) {
         success++;
@@ -200,7 +200,7 @@
     ```js
     var result = eval(hieroglyph.encodeCharacter('汉'));
     if (result.length > 1) {
-      result = eval(result);
+      result = eval('"' + result + '"');
     }
     console.log(JSON.stringify(result));
     // > "汉"
@@ -213,7 +213,7 @@
     }
     var charCode = char.charCodeAt();
     characters[char] =
-      encodeString('"\\u' + (charCode + 0x10000).toString(16).slice(1) + '"');
+      encodeString('\\u' + (charCode + 0x10000).toString(16).slice(1));
     return characters[char];
   }
   exports.encodeCharacter = encodeCharacter;

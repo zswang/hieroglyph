@@ -14,6 +14,7 @@ function print(value) {
   }
   printValue = value;
 }
+global.print = print;
 describe("./src/hieroglyph.js", function () {
   printValue = undefined;
   it("encodeNumber():check 0~1000", function () {
@@ -42,7 +43,7 @@ describe("./src/hieroglyph.js", function () {
       var char = String.fromCharCode(i);
       var result = eval(hieroglyph.encodeCharacter(char));
       if (result.length > 1) {
-        result = eval(result);
+        result = eval('"' + result + '"');
       }
       if (result === char) {
         success++;
@@ -54,9 +55,14 @@ describe("./src/hieroglyph.js", function () {
   it("encodeCharacter():unicode", function () {
     var result = eval(hieroglyph.encodeCharacter('汉'));
     if (result.length > 1) {
-      result = eval(result);
+      result = eval('"' + result + '"');
     }
     print(JSON.stringify(result));
     assert.equal(printValue, "\"汉\""); printValue = undefined;
+  });
+  it("encodeScript():base", function () {
+    var script = hieroglyph.encodeScript('print("hello world!你好")');
+    eval(script);
+    assert.equal(printValue, "hello world!你好"); printValue = undefined;
   });
 });

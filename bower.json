@@ -1,6 +1,6 @@
 {
   "name": "hieroglyph",
-  "version": "0.0.12",
+  "version": "0.0.14",
   "homepage": "http://github.com/zswang/hieroglyph",
   "description": "hieroglyph",
   "main": "hieroglyph.js",
